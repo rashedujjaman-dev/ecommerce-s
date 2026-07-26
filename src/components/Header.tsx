@@ -89,8 +89,8 @@ const Header = ({
 
         {
           mobileMenuOpen && navItems.length > 0 && (
-            <div>
-              <nav>
+            <div className=" border-t border-gray-200 bg-white md:hidden lg:hidden">
+              <nav className=" flex flex-col gap-4 p-4">
                 {
                   navItems.map((item) => (
                     <Link href={item.href} key={item.href}>
