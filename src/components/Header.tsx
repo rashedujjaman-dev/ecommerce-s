@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { ReactNode, useState } from "react";
-import { FiShoppingCart } from "react-icons/fi";
+import { FiMenu, FiShoppingCart, FiX } from "react-icons/fi";
 
 interface NavItem {
   label: string;
@@ -56,7 +56,8 @@ const Header = ({
             )
           }
 
-          <div>
+            {/* ShowCart Button */}
+          <div className=" flex items-center gap-4">
             {
               showCart && (
                 <button onClick={() => setCartOpen(true)} className=" relative p-2 text-gray-600 hover:text-gray-900 transition-colors">
@@ -72,8 +73,35 @@ const Header = ({
                 </button>
               )
             }
+
+            {/* mobile menu Button */}
+            {
+              navItems.length > 0 && (
+                <button onClick={() => setMobileMenuOpen(!mobileMenuOpen)} className=" md:hidden lg:hidden">
+                  {
+                    mobileMenuOpen ? <FiX className="w-6 h-6"/> : <FiMenu className="w-6 h-6"/>
+                  }
+                </button>
+              )
+            }
           </div>
         </div>
+
+        {
+          mobileMenuOpen && navItems.length > 0 && (
+            <div>
+              <nav>
+                {
+                  navItems.map((item) => (
+                    <Link href={item.href} key={item.href}>
+                      {item.label}
+                    </Link>
+                  ))
+                }
+              </nav>
+            </div>
+          )
+        }
       </header>
     </>
   )
