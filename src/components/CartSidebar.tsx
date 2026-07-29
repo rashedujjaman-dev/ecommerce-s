@@ -8,6 +8,13 @@ interface CartSidebarProps {
 
 
 const CartSidebar = ({ isOpen, onClose }: CartSidebarProps) => {
+  const items = [{
+    id: 1,
+    name: "product 1",
+    price: 28-90,
+    quantity: 2,
+  }];
+
   return (
     <>
       {isOpen && (
@@ -23,6 +30,18 @@ const CartSidebar = ({ isOpen, onClose }: CartSidebarProps) => {
               <FiX className=' w-6 h-6 text-gray-600'/>
             </button>
           </div>
+
+
+          {/* Cart items */}
+          <div className=' flex-1 overflow-y-auto p-6'>
+            {
+              items.length === 0 ? (
+                <p className=' text-gray-600'>Your cart is empty</p>
+              ) : ( <p>Your product Here</p> )
+            }
+
+          </div>
+
         </div>
       </div>
     </>
