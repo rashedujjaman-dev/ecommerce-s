@@ -1,9 +1,43 @@
+import ProductGrid from "@/components/ProductGrid";
+import {products} from "@/data/products"
+import { Suspense } from "react";
+interface HomeProps {
+  searchParams: Promise<{category?: string}>;
+}
 
-
-const page = () => {
+const page = async({searchParams}: HomeProps) => {
+  const params = await searchParams;
+  const category = params?.category || 'all';
+  
   return (
-    <div>Home page</div>
+    <div className=" max-w-7xl mx-auto py-12 px-10 sm:px-5 lg:px-16">
+      <Suspense fallback={ <div>Loading products...</div> }>
+        <ProductGrid products={products} initialCategory={category}/>
+      </Suspense>
+    </div>
   )
 }
 
 export default page
+
+
+function ProductGridFallback() {
+  return (
+    <div>
+      <div className="mb-8 flex flex-wrap gap-4 border-b border-gray-200 pb-4">
+        <div className="h-6 w-16 animate-pulse rounded bg-gray-200"></div>
+        <div className="h-6 w-20 animate-pulse rounded bg-gray-200"></div>
+        <div className="h-6 w-24 animate-pulse rounded bg-gray-200"></div>
+      </div>
+      <div className="grid grid-cols-1 md:grid-cols-4 gap-8 ">
+        {[...Array(8)].map((_, i) => (
+          <div key={i} className="animate-pulse">
+            <div className="aspect-square w-full rounded-lg bg-gray-200"></div>
+            <div className="mt-4 h-4 w-3/4 rounded bg-gray-200"></div>
+            <div className="mt-2 h-4 w-1/2 rounded bg-gray-200"></div>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
