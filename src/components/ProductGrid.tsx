@@ -14,7 +14,7 @@ interface ProductGridProps {
 
 
 const ProductGrid = ({products, initialCategory = 'all'}: ProductGridProps) => {
-  const searchParams = new useSearchParams();
+  const searchParams = useSearchParams();
   const router = useRouter();
 
 
