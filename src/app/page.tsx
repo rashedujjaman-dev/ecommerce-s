@@ -10,7 +10,7 @@ const page = async({searchParams}: HomeProps) => {
   const category = params?.category || 'all';
   
   return (
-    <div className=" max-w-7xl mx-auto py-12 px-10 sm:px-5 lg:px-16">
+    <div className=" max-w-7xl mx-auto py-12 px-5 md:px-10 lg:px-16">
       <Suspense fallback={ <div>Loading products...</div> }>
         <ProductGrid products={products} initialCategory={category}/>
       </Suspense>

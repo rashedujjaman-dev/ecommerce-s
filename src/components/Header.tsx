@@ -40,7 +40,7 @@ const Header = ({
   return (
     <>
       <header className=" bg-white/80 w-full border-b border-gray-200 backdrop-blur-sm sticky top-0 z-50">
-        <div className=" max-w-7xl mx-auto h-16 flex items-center justify-between px-10 sm:px-5 lg:px-16">
+        <div className=" max-w-7xl mx-auto h-16 flex items-center justify-between px-5 md:px-10 lg:px-16">
           <Link href={brandHref} className="text-xl font-bold text-gray-900">
             {" "}
             {brand}{" "}
