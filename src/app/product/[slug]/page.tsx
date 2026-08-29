@@ -1,3 +1,4 @@
+import ProductImageGallery from "@/components/ProductImageGallery";
 import { getProductBySlug } from "@/data/products";
 import Link from "next/link";
 import { notFound } from "next/navigation";
@@ -73,7 +74,12 @@ const productDetailPage = async ({ params }: productDetailPageProps) => {
       <div className=" max-w-7xl mx-auto   px-5 md:px-16">
         <div className=" grid gap-12 grid-cols-1 md:grid-cols-2 mb-16">
           {/* product images */}
-          <div>Product Image</div>
+          <div className=" sticky top-8 self-start">
+            <ProductImageGallery 
+              images= {product.images || [product.image]}
+              productName={product.name}
+            />
+          </div>
 
           {/* product Info */}
           <div>Product Info</div>
