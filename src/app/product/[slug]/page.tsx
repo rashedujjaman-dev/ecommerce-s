@@ -1,7 +1,7 @@
 import { getProductBySlug } from "@/data/products";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import React from "react";
+
 
 interface productDetailPageProps {
   params: Promise<{ slug: string }>;
@@ -20,8 +20,8 @@ const productDetailPage = async ({ params }: productDetailPageProps) => {
     <>
       {/* breadcrumb navigation */}
       <div className=" bg-gray-50 border-b border-gray-200">
-        <div className=" max-w-7xl mx-auto  py-4 px-5 md:px-16 lg:px-20">
-          <nav className=" flex items-center space-x-2 text-sm text-gray-600">
+        <div className=" max-w-7xl mx-auto  py-4 px-5 md:px-16">
+          <nav className=" flex items-center space-x text-sm text-gray-600">
             <Link href="/" className=" hover:text-gray-900 transition-colors">
               Home
             </Link>
@@ -69,6 +69,17 @@ const productDetailPage = async ({ params }: productDetailPageProps) => {
           </nav>
         </div>
       </div>
+
+      <div className=" max-w-7xl mx-auto   px-5 md:px-16">
+        <div className=" grid gap-12 grid-cols-1 md:grid-cols-2 mb-16">
+          {/* product images */}
+          <div>Product Image</div>
+
+          {/* product Info */}
+          <div>Product Info</div>
+        </div>
+      </div>
+      
     </>
   );
 };

@@ -43,8 +43,8 @@ const Header = ({
         <div className=" max-w-7xl mx-auto h-16 flex items-center justify-between px-5 md:px-10 lg:px-16">
           <Link href={brandHref} className="text-xl font-bold text-gray-900">
             {" "}
-            <span className=" text-white px-2 p-1 mr-0.8 bg-gray-900 text-2xl rounded-bl-2xl rounded-tr-2xl">
-             ecommerce-s
+            <span className=" text-gray-900 ">
+             <span className="bg-amber-700 p-1 mr-0.8  text-2xl rounded-bl-2xl rounded-tr-2xl text-white px-2">E</span>-commerce Fav
             </span>{" "}
           </Link>
 
