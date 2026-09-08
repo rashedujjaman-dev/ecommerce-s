@@ -20,8 +20,8 @@ const productDetailPage = async ({ params }: productDetailPageProps) => {
   return (
     <>
       {/* breadcrumb navigation */}
-      <div className=" bg-gray-50 border-b border-gray-200">
-        <div className=" max-w-7xl mx-auto  py-4 px-5 md:px-16">
+      <div className=" bg-gray-50 border-b border-gray-200 mt-">
+        <div className=" max-w-7xl mx-auto  py-3 px-5 md:px-16">
           <nav className=" flex items-center space-x text-sm text-gray-600">
             <Link href="/" className=" hover:text-gray-900 transition-colors">
               Home
@@ -71,7 +71,7 @@ const productDetailPage = async ({ params }: productDetailPageProps) => {
         </div>
       </div>
 
-      <div className=" max-w-7xl mx-auto   px-5 md:px-16">
+      <div className=" max-w-7xl mx-auto mt-5  px-5 md:px-16">
         <div className=" grid gap-12 grid-cols-1 md:grid-cols-2 mb-16">
           {/* product images */}
           <div className=" sticky top-8 self-start">
@@ -82,7 +82,13 @@ const productDetailPage = async ({ params }: productDetailPageProps) => {
           </div>
 
           {/* product Info */}
-          <div>Product Info</div>
+          <div className=" flex flex-col">
+            {/* product title and price */}
+            <div>
+              <h1 className=" text-3xl font-bold text-gray-900 tracking-tight">{product.name} </h1>
+            </div>
+
+          </div>
         </div>
       </div>
       

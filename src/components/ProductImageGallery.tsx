@@ -7,6 +7,7 @@ interface ProductImageGalleryProps {
   productName: string;
 }
 
+
 const ProductImageGallery = ({
   images,
   productName,
@@ -50,13 +51,12 @@ const ProductImageGallery = ({
               selectedImageIndex === index ? 'border-gray-500 shadow-md' : 'border-gray-200 hover:shadow-lg'
             }`}
             >
-              <ProductImage
-              
+              <ProductImage              
                 src={image}
                 alt={`${productName} Image ${index + 1}`}
                 width={200}
                 height={200}
-                className={`h-full w-full object-cover object-center transition-opacity duration-300 cursor-pointer ${selectedImageIndex === index ? ' opacity-100' : 'opacity-70 hover:opacity-100'}`}
+                className={`h-full w-full object-cover object-center transition-opacity duration-300 cursor-pointer ${selectedImageIndex === index ? ' opacity-100' : 'opacity-60 hover:opacity-100'}`}
                 fallbackText={`${productName} Thumbnail ${index + 1}`}
               /> 
             </button>
