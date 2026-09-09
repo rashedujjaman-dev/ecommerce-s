@@ -1,7 +1,9 @@
+import ProductActions from "@/components/ProductActions";
 import ProductImageGallery from "@/components/ProductImageGallery";
 import { getProductBySlug } from "@/data/products";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { FiStar } from "react-icons/fi";
 
 
 interface productDetailPageProps {
@@ -84,10 +86,33 @@ const productDetailPage = async ({ params }: productDetailPageProps) => {
           {/* product Info */}
           <div className=" flex flex-col">
             {/* product title and price */}
-            <div>
-              <h1 className=" text-3xl font-bold text-gray-900 tracking-tight">{product.name} </h1>
+            <div className=" mb-6">
+              <h1 className=" text-3xl font-bold text-gray-900 tracking-tight mb-4">{product.name} </h1>
+              <div className=" flex items-baseline gap-1">
+                <p className=" text-3xl font-bold text-gray-900">${product.price.toFixed(2)}</p>
+                <span className=" text-lg font-normal text-gray-500">{product.currency}</span>
+              </div>
             </div>
 
+            {/* rating provider */}
+            <div className=" flex items-center gap-2 mb-6">
+              <div className=" flex items-center">
+                {[...Array(5)].map((_, index) => (
+                  <FiStar key={index} className=" w-6 h-6 text-amber-300 fill-amber-300"/>
+                ))}
+              </div>
+              <span className=" text-gray-600 text-sm">(120 reviews)</span>
+              <span className=" text-gray-300">|</span>
+              <span className=" text-sm text-green-600 font-medium">In Stock</span>
+            </div>
+
+            {/* product description */}
+            <div className=" mb-8">
+              <p className=" text-base leading-7 to-gray-600">{product.description}</p>
+            </div>
+
+                {/* product actions */}
+                <ProductActions product={product}/>
           </div>
         </div>
       </div>
