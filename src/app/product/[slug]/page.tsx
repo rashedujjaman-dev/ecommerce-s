@@ -1,4 +1,5 @@
-import ProductActions from "@/components/ProductActions";
+
+import ProductAction from "@/components/ProductAction";
 import ProductImageGallery from "@/components/ProductImageGallery";
 import { getProductBySlug } from "@/data/products";
 import Link from "next/link";
@@ -112,7 +113,7 @@ const productDetailPage = async ({ params }: productDetailPageProps) => {
             </div>
 
                 {/* product actions */}
-                <ProductActions product={product}/>
+                <ProductAction product={product}/>
           </div>
         </div>
       </div>

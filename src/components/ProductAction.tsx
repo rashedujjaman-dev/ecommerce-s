@@ -3,12 +3,13 @@
 
 import { Product } from '@/types/product'
 import React, { useState } from 'react'
+import ProductOptions from './ProductOptions';
 
-interface ProductActionsProps{
+interface ProductActionProps{
   product: Product;
 }
 
-const ProductActions = ({product}: ProductActionsProps) => {
+const ProductAction = ({product}: ProductActionProps) => {
   const [selectedColor, setSelectedColor] =useState<string | undefined>(product.colors?.[0]);
 
    const [selectedSize, setSelectedSize] =useState<string | undefined>(product.sizes?.[0]);
@@ -30,9 +31,14 @@ const ProductActions = ({product}: ProductActionsProps) => {
    }
   return (
     <>
-
+      {/* product options */}
+      <div className=' mb-8'>
+        <ProductOptions product={product}
+        onSelectionChange={handleSelectionChange}
+        />
+      </div>
     </>
   )
 }
 
-export default ProductActions
+export default ProductAction
