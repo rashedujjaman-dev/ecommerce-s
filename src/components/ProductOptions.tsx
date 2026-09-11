@@ -122,7 +122,7 @@ const ProductOptions = ({
       )}
 
       {/* size selection */}
-       {product.sizes && product.sizes.length > 0 && (
+      {product.sizes && product.sizes.length > 0 && (
         <div>
           <div className=" flex items-center justify-start mb-4">
             <label className=" block text-base font-semibold text-gray-900 mr-2">
@@ -142,7 +142,6 @@ const ProductOptions = ({
                   key={size}
                   onClick={() => handleSizeChange(size)}
                   className={`text-xs group relative flex items-center justify-center w-15 h-10 rounded-3xl  border-2 text-gray-700 cursor-pointer ${isSelected ? "border-gray-900 bg-gray-800 text-white" : " border-gray-300"} focus:outline-none`}
-                  
                 >
                   {size}
                 </button>
@@ -151,6 +150,52 @@ const ProductOptions = ({
           </div>
         </div>
       )}
+
+      {/* quantity selection */}
+      <div>
+        <div>
+          <div className=" flex items-center justify-start mb-4">
+            <label className=" block text-base font-semibold text-gray-900 mr-2">
+              Quantity
+            </label>
+            {quantity && (
+              <span className=" text-sm font-semibold text-gray-600">
+                ({quantity})
+              </span>
+            )}
+            {product.stock && (
+              <span className=" text-sm font-medium text-gray-600 ml-4">
+                {" "}
+                *{product.stock} in Stock
+              </span>
+            )}
+          </div>
+          <div className=" flex items-center  gap-4">
+            <button
+              onClick={() => handleQuantityChange(quantity - 1)}
+              disabled={quantity <= 1}
+              className={`text-xs group relative flex items-center justify-center w-15 h-10 rounded-2xl  border-2 text-gray-700 cursor-pointer  focus:outline-none`}
+            >
+              -
+            </button>
+            <input type="number" 
+            min={1}
+            max={maxQuantity}
+            value={quantity}
+            onChange={(e) => handleQuantityChange(parseInt(e.target.value) || 1)}
+            className=" w-16 h-10 border-2 border-gray-300 rounded-2xl focus:outline-none focus:ring from-gray-500 focus:border-gray-500 text-center items-center cursor-pointer "
+            />
+
+            <button
+              onClick={() => handleQuantityChange(quantity + 1)}
+              disabled={quantity >= maxQuantity}
+              className={`text-xs group relative flex items-center justify-center w-15 h-10 rounded-2xl  border-2 text-gray-700 cursor-pointer  focus:outline-none`}
+            >
+              +
+            </button>
+          </div>
+        </div>
+      </div>
     </div>
   );
 };
