@@ -58,65 +58,92 @@ const ProductOptions = ({
 
   return (
     <div className=" space-y-8 border-t border-gray-200 pt-8">
-    {/* Color Options */}
-    {
-      product.colors && product.colors.length > 0 && (
+      {/* Color Options */}
+      {product.colors && product.colors.length > 0 && (
         <div>
           <div className=" flex items-center justify-start mb-4">
-              <label className=" block text-base font-semibold text-gray-900 mr-2">Color</label>
-              {
-                selectedColor && (
-                  <span className=" text-sm font-semibold text-gray-600">({selectedColor})</span>
-                )
-              }
+            <label className=" block text-base font-semibold text-gray-900 mr-2">
+              Color
+            </label>
+            {selectedColor && (
+              <span className=" text-sm font-semibold text-gray-600">
+                ({selectedColor})
+              </span>
+            )}
           </div>
           <div className=" flex flex-wrap gap-3">
-            {
-              product.colors.map((color) => {
-                const isSelected = selectedColor === color;
-                const colorValue = getColorValue(color);
-                return (
-                  <button
+            {product.colors.map((color) => {
+              const isSelected = selectedColor === color;
+              const colorValue = getColorValue(color);
+              return (
+                <button
                   key={color}
                   onClick={() => handleColorChange(color)}
-                  className={`group relative flex items-center justify-center w-10 h-10 rounded-full border-2 ${isSelected ? 'border-gray-900' : ' border-gray-300'} focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500`}
-
+                  className={`group relative flex items-center justify-center w-10 h-10 rounded-full border-2 cursor-pointer ${isSelected ? "border-gray-900" : " border-gray-300"} focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500`}
                   style={
-                    colorValue ? {backgroundColor: colorValue}: undefined
+                    colorValue ? { backgroundColor: colorValue } : undefined
                   }
-                  ></button>
-                )
-              })
-            }
+                >
+                  {!colorValue && (
+                    <span
+                      className={`text-xs font-semibold ${isSelected ? "text-gray-900" : "text-gray-700"} `}
+                    >
+                      {color.charAt(0).toUpperCase()}
+                    </span>
+                  )}
+                  {isSelected && (
+                    <span className=" absolute inset-0 flex items-center justify-center">
+                      <svg
+                        className={`w-5 h-5 drop-shadow-md ${
+                          ["#ffffff", "#f5f5dc", "#fbbf24", "#d2b48c"].includes(
+                            (colorValue || "").toLowerCase(),
+                          )
+                            ? "text-gray-900"
+                            : "text-white"
+                        }`}
+                        fill="none"
+                        stroke=" currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={3}
+                          d="M5 13l4 4L19 7"
+                        />
+                      </svg>
+                    </span>
+                  )}
+                </button>
+              );
+            })}
           </div>
         </div>
-      )
-    }
+      )}
     </div>
-  )
+  );
 };
 
 export default ProductOptions;
 
-
 // Helper function to get color values for common color names
 function getColorValue(colorName: string): string | null {
   const colorMap: Record<string, string> = {
-    black: '#000000',
-    gray: '#6B7280',
-    navy: '#1E3A8A',
-    red: '#EF4444',
-    blue: '#3B82F6',
-    green: '#10B981',
-    yellow: '#FBBF24',
-    orange: '#F97316',
-    purple: '#A855F7',
-    pink: '#EC4899',
-    white: '#FFFFFF', 
-    grey: '#6B7280',
-    brown: '#92400E',
-    beige: '#F5F5DC',
-    tan: '#D2B48C',
+    black: "#000000",
+    gray: "#6B7280",
+    navy: "#1E3A8A",
+    red: "#EF4444",
+    blue: "#3B82F6",
+    green: "#10B981",
+    yellow: "#FBBF24",
+    orange: "#F97316",
+    purple: "#A855F7",
+    pink: "#EC4899",
+    white: "#FFFFFF",
+    grey: "#6B7280",
+    brown: "#92400E",
+    beige: "#F5F5DC",
+    tan: "#D2B48C",
   };
 
   const normalized = colorName.toLowerCase().trim();
