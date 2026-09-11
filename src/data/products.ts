@@ -36,6 +36,7 @@ export const products: Product[] = [
     category: 'accessories',
     slug: 'acme-drawstring-bag',
     colors: ['Black', 'Navy', 'Gray', 'Red'],
+    sizes: ['XS', 'S', 'M', 'L', 'XL', 'XXL'],
     stock: 30,
   },
   {
@@ -53,6 +54,7 @@ export const products: Product[] = [
     category: 'accessories',
     slug: 'acme-cup',
     colors: ['White', 'Black', 'Blue'],
+    sizes: ['XS','SM', 'MD', 'LG'],
     stock: 25,
   },
   {
@@ -71,6 +73,7 @@ export const products: Product[] = [
     category: 'accessories',
     slug: 'acme-mug',
     colors: ['White', 'Black', 'Red', 'Blue'],
+    sizes: ['XS','SM', 'MD', 'LG'],
     stock: 40,
   },
   {
@@ -125,7 +128,7 @@ export const products: Product[] = [
     category: 'accessories',
     slug: 'acme-baby-cap',
     colors: ['White', 'Pink', 'Blue', 'Beige'],
-    sizes: ['Newborn', '0-6M', '6-12M'],
+    sizes: ['Newborn', '1-4M', '5-8M' , '9-15M'],
     stock: 15,
   },
   {
@@ -143,6 +146,7 @@ export const products: Product[] = [
     ],
     category: 'stickers',
     slug: 'acme-sticker-pack',
+    sizes: ['XS','SM', 'MD', 'LG'],
     stock: 100,
   },
 ];

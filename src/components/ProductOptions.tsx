@@ -120,6 +120,37 @@ const ProductOptions = ({
           </div>
         </div>
       )}
+
+      {/* size selection */}
+       {product.sizes && product.sizes.length > 0 && (
+        <div>
+          <div className=" flex items-center justify-start mb-4">
+            <label className=" block text-base font-semibold text-gray-900 mr-2">
+              Size
+            </label>
+            {selectedSize && (
+              <span className=" text-sm font-semibold text-gray-600">
+                ({selectedSize})
+              </span>
+            )}
+          </div>
+          <div className=" flex flex-wrap gap-3">
+            {product.sizes.map((size) => {
+              const isSelected = selectedSize === size;
+              return (
+                <button
+                  key={size}
+                  onClick={() => handleSizeChange(size)}
+                  className={`text-xs group relative flex items-center justify-center w-15 h-10 rounded-3xl  border-2 text-gray-700 cursor-pointer ${isSelected ? "border-gray-900 bg-gray-800 text-white" : " border-gray-300"} focus:outline-none`}
+                  
+                >
+                  {size}
+                </button>
+              );
+            })}
+          </div>
+        </div>
+      )}
     </div>
   );
 };
