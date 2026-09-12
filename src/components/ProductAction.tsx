@@ -1,9 +1,14 @@
+
+// product action 
+
+
 "use client"
 
 
 import { Product } from '@/types/product'
 import React, { useState } from 'react'
 import ProductOptions from './ProductOptions';
+import AddToCartButton from './AddToCartButton';
 
 interface ProductActionProps{
   product: Product;
@@ -37,6 +42,17 @@ const ProductAction = ({product}: ProductActionProps) => {
         onSelectionChange={handleSelectionChange}
         />
       </div>
+
+      {/* add to cart section */}
+      <div className=' space-y-4 mb-8'>
+        <AddToCartButton 
+        product={product}
+        selectedColor={selectedColor}
+        selectedSize={selectedSize}
+        quantity={quantity}
+      />
+      </div>
+      
     </>
   )
 }

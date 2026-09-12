@@ -1,7 +1,11 @@
+
+// product options
+
 "use client";
 
 import { Product } from "@/types/product";
 import React, { useState } from "react";
+import { FiMinus, FiPlus } from "react-icons/fi";
 
 interface ProductOptionsProps {
   product: Product;
@@ -174,9 +178,9 @@ const ProductOptions = ({
             <button
               onClick={() => handleQuantityChange(quantity - 1)}
               disabled={quantity <= 1}
-              className="text-xl group relative flex items-center justify-center w-15 h-10 rounded-2xl border-2 border-gray-300 bg-white text-gray-700 cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed focus:outline-none transition-colors hover:bg-gray-900 hover:text-white hover:border-gray-900"
+              className=" font-semibold group relative flex items-center justify-center w-16 h-10 rounded-2xl border-2 border-gray-300 bg-white text-gray-700 cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed focus:outline-none transition-colors hover:bg-gray-900 hover:text-white hover:border-gray-800"
             >
-              -
+              <FiMinus />
             </button>
             <input type="number" 
             min={1}
@@ -189,9 +193,9 @@ const ProductOptions = ({
             <button
               onClick={() => handleQuantityChange(quantity + 1)}
               disabled={quantity >= maxQuantity}
-              className="text-lg group relative flex items-center justify-center w-15 h-10 rounded-2xl border-2 border-gray-300 bg-white text-gray-700 cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed focus:outline-none transition-colors hover:bg-gray-900 hover:text-white hover:border-gray-900"
+              className="font-medium group relative flex items-center justify-center w-16 h-10 rounded-2xl border-2 border-gray-300 bg-white text-gray-700 cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed focus:outline-none transition-colors hover:bg-gray-900 hover:text-white hover:border-gray-800"
             >
-              +
+              <FiPlus />
             </button>
           </div>
         </div>
