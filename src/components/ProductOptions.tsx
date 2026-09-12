@@ -174,7 +174,7 @@ const ProductOptions = ({
             <button
               onClick={() => handleQuantityChange(quantity - 1)}
               disabled={quantity <= 1}
-              className={`text-xs group relative flex items-center justify-center w-15 h-10 rounded-2xl  border-2 text-gray-700 cursor-pointer  focus:outline-none`}
+              className="text-xl group relative flex items-center justify-center w-15 h-10 rounded-2xl border-2 border-gray-300 bg-white text-gray-700 cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed focus:outline-none transition-colors hover:bg-gray-900 hover:text-white hover:border-gray-900"
             >
               -
             </button>
@@ -189,7 +189,7 @@ const ProductOptions = ({
             <button
               onClick={() => handleQuantityChange(quantity + 1)}
               disabled={quantity >= maxQuantity}
-              className={`text-xs group relative flex items-center justify-center w-15 h-10 rounded-2xl  border-2 text-gray-700 cursor-pointer  focus:outline-none`}
+              className="text-lg group relative flex items-center justify-center w-15 h-10 rounded-2xl border-2 border-gray-300 bg-white text-gray-700 cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed focus:outline-none transition-colors hover:bg-gray-900 hover:text-white hover:border-gray-900"
             >
               +
             </button>
