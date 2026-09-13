@@ -17,14 +17,13 @@ interface CartContextProps {
   ) => void;
 
   removeFromCart: (
-    product: Product,
-    quantity: number,
+    productId: string,
     selectedColor?: string,
     selectedSize?: string,
   ) => void;
 
   updateQuantity: (
-    product: Product,
+    productId: string,
     quantity: number,
     selectedColor?: string,
     selectedSize?: string,
@@ -69,8 +68,7 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
   };
 
   const removeFromCart = (
-    product: Product,
-    quantity: number,
+    productId: string,
     selectedColor?: string,
     selectedSize?: string,
   ) => {
@@ -78,7 +76,7 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
       prevItems.filter(
         (item) =>
           !(
-            item.product.id === product.id &&
+            item.product.id === productId &&
             item.selectedColor === selectedColor &&
             item.selectedSize === selectedSize
           ),
@@ -87,18 +85,18 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
   };
   
   const updateQuantity = (
-  product: Product,
+  productId: string,
   quantity: number,
   selectedColor?: string,
   selectedSize?: string
 ) => {
   if (quantity <= 0) {
-    removeFromCart(product, quantity, selectedColor, selectedSize); 
+    removeFromCart(productId, selectedColor, selectedSize); 
     return;
   }
   setItems((prevItems) =>
     prevItems.map((item) =>
-      item.product.id === product.id &&
+      item.product.id === productId &&
       item.selectedColor === selectedColor &&
       item.selectedSize === selectedSize
         ? { ...item, quantity }
