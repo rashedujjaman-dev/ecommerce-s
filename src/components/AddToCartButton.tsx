@@ -17,10 +17,12 @@ interface AddToCartButtonProps {
 const AddToCartButton = ({ product, selectedColor, selectedSize,  quantity}: AddToCartButtonProps) => {
   const {addToCart} = useCart();
   const [isAdded, setIsAdded] = useState(false);
+  
 
   const handleAddToCart = () => {
     addToCart(product, quantity, selectedColor, selectedSize);
     setIsAdded(true);
+    setTimeout(() => setIsAdded(false), 2000)
   }
 
 

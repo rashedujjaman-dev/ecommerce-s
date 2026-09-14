@@ -12,6 +12,7 @@ interface CartSidebarProps {
 const CartSidebar = ({ isOpen, onClose }: CartSidebarProps) => {
   const { items, removeFromCart, updateQuantity, getTotalPrice, clearCart } =
     useCart();
+  const total = getTotalPrice();
 
   return (
     <>
@@ -104,7 +105,7 @@ const CartSidebar = ({ isOpen, onClose }: CartSidebarProps) => {
                             className="p-1 hover:bg-gray-100 rounded transition-colors"
                             aria-label="Decrease quantity"
                           >
-                            <FiMinus className="w-4 h-4 text-gray-600" />
+                            <FiMinus className="w-4 h-4 text-gray-600 cursor-pointer" />
                           </button>
                           <span className="w-8 text-center text-sm font-medium text-gray-900">
                             {item.quantity}
@@ -124,7 +125,7 @@ const CartSidebar = ({ isOpen, onClose }: CartSidebarProps) => {
                             className="p-1 hover:bg-gray-100 rounded transition-colors"
                             aria-label="Increase quantity"
                           >
-                            <FiPlus className="w-4 h-4 text-gray-600" />
+                            <FiPlus className="w-4 h-4 text-gray-600 cursor-pointer"/>
                           </button>
                         </div>
                         <div className="flex items-center gap-3">
@@ -152,6 +153,34 @@ const CartSidebar = ({ isOpen, onClose }: CartSidebarProps) => {
               </div>
             )}
           </div>
+
+          {/* Cart Footer */}
+          {
+            items.length > 0 && (
+              <div className=" border-t border-gray-200 p-6 space-y-4">
+                <div className=" flex items-center justify-between text-gray-900 text-lg font-bold">
+                  <span>Total: </span>
+                  <span>$ {total.toFixed(2)}</span>
+                </div>
+
+                <div className=" space-y-3">
+                  <Link href="/checkout"
+                  className=" block w-full text-center bg-gray-900 text-white rounded-lg font-semibold hover:bg-gray-800 cursor-pointer transition-colors py-3 px-6"
+                  >
+                    Proceed to Checkout
+                  </Link>
+
+                  <button
+                  onClick={clearCart}
+                  className="block w-full text-center border text-black rounded-lg font-semibold hover:bg-red-500 hover:text-white cursor-pointer transition-colors py-3 px-6"
+                  >
+                    Clear Cart
+                  </button>
+                </div>
+              </div>
+            )
+          }
+          
         </div>
       </div>
     </>

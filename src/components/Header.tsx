@@ -4,6 +4,7 @@ import Link from "next/link";
 import { ReactNode, useState } from "react";
 import { FiMenu, FiShoppingCart, FiX } from "react-icons/fi";
 import CartSidebar from "./CartSidebar";
+import { useCart } from "@/contexts/CartContext";
 
 interface NavItem {
   label: string;
@@ -33,9 +34,9 @@ const Header = ({
   const [cartOpen, setCartOpen] = useState(false);
 
   const handleNavClick = () => setMobileMenuOpen(false);
-
+  const {getTotalItems} = useCart()
   // TODO: cart count
-  const cartCount = 3;
+  const cartCount = showCart ? getTotalItems() : 0;
 
   return (
     <>
