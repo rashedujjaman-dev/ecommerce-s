@@ -77,7 +77,7 @@ const productDetailPage = async ({ params }: productDetailPageProps) => {
       <div className=" max-w-7xl mx-auto mt-5  px-5 md:px-16">
         <div className=" grid gap-12 grid-cols-1 md:grid-cols-2 mb-16">
           {/* product images */}
-          <div className=" sticky top-8 self-start">
+          <div className=" top-8 self-start">
             <ProductImageGallery 
               images= {product.images || [product.image]}
               productName={product.name}

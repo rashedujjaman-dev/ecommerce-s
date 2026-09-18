@@ -226,7 +226,7 @@ const CheckoutPage = () => {
             <button
               onClick={handleCheckout}
               disabled={loading || items.length === 0}
-              className="w-full rounded-lg bg-gray-900 px-6 py-4 text-base font-semibold text-white transition-all duration-200 hover:bg-gray-800 hover:shadow-lg disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+              className="w-full rounded-lg bg-gray-900 px-6 py-4 text-base font-semibold text-white transition-all duration-200 hover:bg-gray-800 hover:shadow-lg disabled:opacity-50 disabled:cursor-not-allowed flex items-center cursor-pointer justify-center gap-2"
             >
               {loading ? (
                 <>
