@@ -165,6 +165,7 @@ const CartSidebar = ({ isOpen, onClose }: CartSidebarProps) => {
 
                 <div className=" space-y-3">
                   <Link href="/checkout"
+                  onClick={onClose}
                   className=" block w-full text-center bg-gray-900 text-white rounded-lg font-semibold hover:bg-gray-800 cursor-pointer transition-colors py-3 px-6"
                   >
                     Proceed to Checkout
