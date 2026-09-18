@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { ReactNode, useState } from "react";
+import { ReactNode, useEffect, useRef, useState } from "react";
 import { FiMenu, FiShoppingCart, FiX } from "react-icons/fi";
 import CartSidebar from "./CartSidebar";
 import { useCart } from "@/contexts/CartContext";
@@ -33,19 +33,44 @@ const Header = ({
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [cartOpen, setCartOpen] = useState(false);
 
+  const menuRef = useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (menuRef.current && !menuRef.current.contains(event.target as Node)) {
+        setMobileMenuOpen(false);
+      }
+    };
+
+    if (mobileMenuOpen) {
+      document.addEventListener("mousedown", handleClickOutside);
+    }
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [mobileMenuOpen]);
+
   const handleNavClick = () => setMobileMenuOpen(false);
+  
   const {getTotalItems} = useCart()
   // TODO: cart count
   const cartCount = showCart ? getTotalItems() : 0;
 
   return (
     <>
-      <header className=" bg-white/80 w-full border-b border-gray-200 backdrop-blur-sm sticky top-0 z-50">
+      <header
+        ref={menuRef}
+        className=" bg-white/80 w-full border-b border-gray-200 backdrop-blur-sm sticky top-0 z-50"
+      >
         <div className=" max-w-7xl mx-auto h-16 flex items-center justify-between px-5 md:px-10 lg:px-16">
           <Link href={brandHref} className="text-xl font-bold text-gray-900">
             {" "}
             <span className=" text-gray-900 ">
-             <span className="bg-amber-700 p-1 mr-0.8  text-2xl rounded-bl-2xl rounded-tr-2xl text-white px-2">E</span>-commerce Fav
+              <span className="bg-amber-700 p-1 mr-0.8  text-2xl rounded-bl-2xl rounded-tr-2xl text-white px-2">
+                E
+              </span>
+              -commerce Fav
             </span>{" "}
           </Link>
 
@@ -84,7 +109,8 @@ const Header = ({
             {navItems.length > 0 && (
               <button
                 onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-                className=" md:hidden lg:hidden"
+                className="md:hidden lg:hidden"
+                aria-label="Toggle mobile menu"
               >
                 {mobileMenuOpen ? (
                   <FiX className="w-6 h-6" />
@@ -97,10 +123,15 @@ const Header = ({
         </div>
 
         {mobileMenuOpen && navItems.length > 0 && (
-          <div className=" border-t border-gray-200 bg-white md:hidden lg:hidden">
-            <nav className=" flex flex-col gap-4 p-4">
+          <div className="border-t border-gray-200 bg-white md:hidden lg:hidden">
+            <nav className="flex flex-col gap-4 p-4">
               {navItems.map((item) => (
-                <Link href={item.href} key={item.href}>
+                <Link
+                  href={item.href}
+                  key={item.href}
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="text-gray-700 hover:text-gray-900 font-medium transition-colors"
+                >
                   {item.label}
                 </Link>
               ))}
@@ -109,11 +140,9 @@ const Header = ({
         )}
       </header>
 
-      {
-        showCart && (
-          <CartSidebar isOpen={cartOpen} onClose={() => setCartOpen(false)}/>
-        )
-      }
+      {showCart && (
+        <CartSidebar isOpen={cartOpen} onClose={() => setCartOpen(false)} />
+      )}
     </>
   );
 };

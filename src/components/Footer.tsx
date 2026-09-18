@@ -115,8 +115,22 @@ export default function Footer() {
         </div>
 
         {/* Bottom Bar */}
-        <div className="border-t border-gray-200 pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-gray-500 gap-4">
+        <div className="border-t border-gray-200 pt-8 flex flex-col sm:flex-row items-center justify-between text-sm text-gray-500 gap-4">
           <p>© {currentYear} E-commerce Fav. All rights reserved.</p>
+          
+          {/* Developer Credit / Link */}
+          <p className="text-gray-500">
+             Design & Developed by{' '}
+            <a
+              href="https://rashedujjaman.vercel.app/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-gray-900 font-semibold hover:text-amber-700 transition-colors"
+            >
+              Rashedujjaman
+            </a>
+          </p>
+
           <div className="flex items-center space-x-6">
             <Link href="/terms" className="hover:text-gray-900 transition-colors">
               Terms
