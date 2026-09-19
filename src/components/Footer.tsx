@@ -120,7 +120,7 @@ export default function Footer() {
           
           {/* Developer Credit / Link */}
           <p className="text-gray-500">
-             Design & Developed by{' '}
+             Developed by{' '}
             <a
               href="https://rashedujjaman.vercel.app/"
               target="_blank"
